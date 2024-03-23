@@ -1,0 +1,30 @@
+<launch>
+  <!-- arguments -->
+  <arg name="model" default="$(find d_bot_description)/urdf/d_bot_main.urdf"/>
+  <arg name="rvizconfig" default="$(find d_bot_description)/rviz/rviz.rviz" />
+
+  <!-- gazebo -->
+  <include file="$(find urdf_sim_tutorial)/launch/gazebo.launch">
+    <arg name="model" value="$(arg model)" />
+  </include>
+
+  <!-- rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" />
+
+  <rosparam command="load"
+            file="$(find d_bot_sim_control)/config/joints.yaml"
+            ns="dbot_joint_state_controller" />
+
+  <rosparam command="load"
+            file="$(find d_bot_sim_control)/config/diffdrive.yaml"
+            ns="dbot_diff_drive_controller" />
+
+  <node name="rover_controller_spawner" pkg="controller_manager" type="spawner"
+    args="dbot_joint_state_controller
+          dbot_diff_drive_controller"/>
+
+  <!-- rqt joystick -->
+  <!-- <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+    <param name="default_topic" value="/dbot_diff_drive_controller/cmd_vel"/>
+  </node> -->
+</launch>
