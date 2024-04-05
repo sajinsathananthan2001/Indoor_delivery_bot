@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="d_bot">
+    
+
+  <xacro:macro name="set_wheel_friction" params="link friction">
+    <gazebo reference="${link}">
+      <material>Gazebo/Black</material>
+      <mu1 value="${friction}"/>
+      <mu2 value="${friction}"/>
+      <kp value="10000000.0"/>
+      <kd value="1"/>
+      <minDepth>0.001</minDepth>
+      <fdir1>0 0 0</fdir1>
+      <max_vel>0.01</max_vel>
+    </gazebo>
+  </xacro:macro>
+    
+  <xacro:macro name="set_castor_joint_friction" params="link friction">
+    <gazebo reference="${link}">
+      <mu1 value="${friction}"/>
+      <mu2 value="${friction}"/>
+    </gazebo>
+  </xacro:macro>
+
+<!-- friction for caster wheels -->
+<xacro:set_wheel_friction link="drive_left_link" friction="10"/>
+<xacro:set_wheel_friction link="drive_right_link" friction="10"/>
+<xacro:set_wheel_friction link="fr_caster_wheel_link" friction="1"/>
+<xacro:set_wheel_friction link="br_caster_wheel_link" friction="1"/>
+<xacro:set_wheel_friction link="fl_caster_wheel_link" friction="1"/>
+<xacro:set_wheel_friction link="bl_caster_wheel_link" friction="1"/>
+
+<!-- friction for caster handle -->
+<xacro:set_castor_joint_friction link="fr_caster_holder_link" friction="1"/>
+<xacro:set_castor_joint_friction link="br_caster_holder_link" friction="1"/>
+<xacro:set_castor_joint_friction link="fl_caster_holder_link" friction="1"/>
+<xacro:set_castor_joint_friction link="bl_caster_holder_link" friction="1"/>
+
+</robot>

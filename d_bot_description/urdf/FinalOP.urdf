@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="finall">
+
+  <!-- base_link -->
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.0423492651141056 -0.000629070656696568 0.448325523519396"
+        rpy="0 0 0" />
+      <mass
+        value="13.3810993131387" />
+      <inertia
+        ixx="0.279429636735087"
+        ixy="-4.46482663329585E-05"
+        ixz="0.00338366620089039"
+        iyy="0.334833172062916"
+        iyz="7.7945750135019E-06"
+        izz="0.495525363460596" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.6 0.6 0.6 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- fl_caster_holder_link -->
+  <link
+    name="fl_caster_holder_link">
+    <inertial>
+      <origin
+        xyz="-0.00421505477259171 -0.0313090196734244 -3.92674485401832E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.00858424854611749" />
+      <inertia
+        ixx="2.29970280094413E-06"
+        ixy="4.04458941956851E-07"
+        ixz="4.8440768889955E-12"
+        iyy="2.0262374837434E-06"
+        iyz="3.99725673641126E-13"
+        izz="2.10686447199303E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/fl_caster_holder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/fl_caster_holder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fl_caster_holder_joint"
+    type="continuous">
+    <origin
+      xyz="0.215225039750229 0.1771 -0.0145388598876857"
+      rpy="-1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="fl_caster_holder_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <!-- fl_caster_wheel_link -->
+  <link
+    name="fl_caster_wheel_link">
+    <inertial>
+      <origin
+        xyz="-4.75314232417645E-16 3.33066907387547E-16 5.55111512312578E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0334173711421252" />
+      <inertia
+        ixx="1.06393339607218E-05"
+        ixy="-1.64491415193783E-21"
+        ixz="-1.4271892951523E-21"
+        iyy="6.33951611873326E-06"
+        iyz="-2.64697796016969E-22"
+        izz="6.33951611873326E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/fl_caster_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/fl_caster_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fl_caster_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0126379418294896 -0.00814162274155295 0"
+      rpy="0.152452190017873 -1.5707963267949 0" />
+    <parent
+      link="fl_caster_holder_link" />
+    <child
+      link="fl_caster_wheel_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+  <!-- fr_caster_holder_link -->
+  <link
+    name="fr_caster_holder_link">
+    <inertial>
+      <origin
+        xyz="-0.00421505477258211 -0.0313090196734245 -3.9267448532887E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.00858424854611759" />
+      <inertia
+        ixx="2.29970280094413E-06"
+        ixy="4.04458941956856E-07"
+        ixz="4.8440768868714E-12"
+        iyy="2.02623748374343E-06"
+        iyz="3.99725673463493E-13"
+        izz="2.10686447199304E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/fr_caster_holder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/fr_caster_holder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_caster_holder_joint"
+    type="continuous">
+    <origin
+      xyz="0.214825039750222 -0.177099999999992 -0.0145388598876857"
+      rpy="-1.57079632679486 0 -1.5707963267949" />
+    <parent
+      link="base_link" />
+    <child
+      link="fr_caster_holder_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <!-- fr_caster_wheel_link -->
+  <link
+    name="fr_caster_wheel_link">
+    <inertial>
+      <origin
+        xyz="9.99200722162641E-16 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0334173711421252" />
+      <inertia
+        ixx="1.06393339607219E-05"
+        ixy="-1.42607716470482E-21"
+        ixz="5.96783662533785E-22"
+        iyy="6.33951611873328E-06"
+        iyz="-1.16467030247466E-21"
+        izz="6.33951611873328E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/fr_caster_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/fr_caster_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_caster_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0126379418294887 -0.00814162274155716 0"
+      rpy="0.233129638410502 -1.5707963267949 0" />
+    <parent
+      link="fr_caster_holder_link" />
+    <child
+      link="fr_caster_wheel_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+  <!-- bl_caster_holder_link -->
+  <link
+    name="bl_caster_holder_link">
+    <inertial>
+      <origin
+        xyz="-0.00421505477258809 -0.0313090196734239 -3.92674485399924E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.00858424854611757" />
+      <inertia
+        ixx="2.29970280094412E-06"
+        ixy="4.04458941956852E-07"
+        ixz="4.84407687965927E-12"
+        iyy="2.02623748374342E-06"
+        iyz="3.99725670074543E-13"
+        izz="2.10686447199303E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/bl_caster_holder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/bl_caster_holder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_caster_holder_joint"
+    type="continuous">
+    <origin
+      xyz="-0.20600856677299 0.177100000000002 -0.0145388598877"
+      rpy="-1.57079632679486 0 -1.5707963267949" />
+    <parent
+      link="base_link" />
+    <child
+      link="bl_caster_holder_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <!-- bl_caster_wheel_link -->
+  <link
+    name="bl_caster_wheel_link">
+    <inertial>
+      <origin
+        xyz="-1.88737914186277E-15 -4.30211422042248E-16 -4.66293670342566E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.0334173711421252" />
+      <inertia
+        ixx="1.06393339607218E-05"
+        ixy="2.26157180953148E-22"
+        ixz="-3.95584656142489E-21"
+        iyy="6.33951611873327E-06"
+        iyz="-2.11758236813575E-22"
+        izz="6.33951611873327E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/bl_caster_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/bl_caster_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_caster_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0126379418294879 -0.00814162274155106 0"
+      rpy="1.43676256222585 -1.5707963267949 0" />
+    <parent
+      link="bl_caster_holder_link" />
+    <child
+      link="bl_caster_wheel_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+  <!-- br_caster_holder_link -->
+  <link
+    name="br_caster_holder_link">
+    <inertial>
+      <origin
+        xyz="-0.00421505339317496 -0.0313090200729957 -3.92653331434123E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.00858425017431507" />
+      <inertia
+        ixx="2.29970246060649E-06"
+        ixy="4.0445898427533E-07"
+        ixz="4.74751800591169E-12"
+        iyy="2.02623813220835E-06"
+        iyz="3.64281471170154E-13"
+        izz="2.1068655004653E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/br_caster_holder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/br_caster_holder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="br_caster_holder_joint"
+    type="continuous">
+    <origin
+      xyz="-0.206408566772991 -0.177100000000006 -0.014538859887695"
+      rpy="-1.57079632679489 0 -3.08172138398829" />
+    <parent
+      link="base_link" />
+    <child
+      link="br_caster_holder_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <!-- br_caster_wheel_link -->
+  <link
+    name="br_caster_wheel_link">
+    <inertial>
+      <origin
+        xyz="-5.55111512312578E-16 5.55111512312578E-17 1.11022302462516E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.0334173711421251" />
+      <inertia
+        ixx="1.06393339607218E-05"
+        ixy="9.9971099854192E-23"
+        ixz="-2.04611396321117E-20"
+        iyy="6.33951611873324E-06"
+        iyz="-1.44212035586327E-22"
+        izz="6.33951611873324E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/br_caster_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/br_caster_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="br_caster_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0126379418294893 -0.00814162274154767 0"
+      rpy="0 -1.5707963267949 0" />
+    <parent
+      link="br_caster_holder_link" />
+    <child
+      link="br_caster_wheel_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+  <!-- drive_left_link -->
+  <link
+    name="drive_left_link">
+    <inertial>
+      <origin
+        xyz="0.050466810771292 -7.38177127468376E-06 -1.11022302462516E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.989823090734287" />
+      <inertia
+        ixx="0.00288690083815091"
+        ixy="3.99025411481449E-07"
+        ixz="-3.81330262386946E-19"
+        iyy="0.00167927281844749"
+        iyz="1.86038687724087E-08"
+        izz="0.00167922796416484" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/drive_left_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.2 0.2 0.2 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/drive_left_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="drive_left_joint"
+    type="continuous">
+    <origin
+      xyz="-7.34417430403589E-06 0.254110517 0.0578240000"
+      rpy="-0.10097 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="drive_left_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+  <!-- drive_right_link -->
+  <link
+    name="drive_right_link">
+    <inertial>
+      <origin
+        xyz="0.0504668107712919 -7.38177127451722E-06 -5.55111512312578E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.989823090734286" />
+      <inertia
+        ixx="0.00288690083815089"
+        ixy="3.99025411481456E-07"
+        ixz="1.23303512574095E-18"
+        iyy="0.00167927281844747"
+        iyz="1.86038687762169E-08"
+        izz="0.00167922796416484" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/drive_right_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.2 0.2 0.2 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/drive_right_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="drive_right_joint"
+    type="continuous">
+    <origin
+      xyz="7.34417430392487E-06 -0.254110517 0.0578240000"
+      rpy="-0.10097 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="drive_right_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+  <!-- front_lidar_link -->
+  <link
+    name="front_lidar_link">
+    <inertial>
+      <origin
+        xyz="-1.49381448587005E-05 0.00999854805941408 -0.0385654544333321"
+        rpy="0 0 0" />
+      <mass
+        value="0.165382751635992" />
+      <inertia
+        ixx="7.51902914938724E-05"
+        ixy="2.88601572510331E-08"
+        ixz="4.84717640920744E-08"
+        iyy="0.000109946753058708"
+        iyz="2.18479443959807E-06"
+        izz="7.88651836105336E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/front_lidar_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 0.4" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/front_lidar_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_lidar_joint"
+    type="fixed">
+    <origin
+      xyz="0.32109 0 0.1123"
+      rpy="1.5708 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_lidar_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <!-- left_rs_link -->
+  <link
+    name="left_rs_link">
+    <inertial>
+      <origin
+        xyz="0.000246312680102403 -6.06249958345906E-05 -0.0130484937748696"
+        rpy="0 0 0" />
+      <mass
+        value="0.0447521563033388" />
+      <inertia
+        ixx="3.94471984129113E-06"
+        ixy="-2.81390454906688E-09"
+        ixz="2.44352072551833E-07"
+        iyy="2.73620515950668E-05"
+        iyz="-1.18478074060764E-09"
+        izz="2.72774911836403E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/left_rs_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/left_rs_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_rs_joint"
+    type="fixed">
+    <origin
+      xyz="0.29154 0.063516 0.2198"
+      rpy="1.4628 0 1.9502" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_rs_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <!-- right_rs_link -->
+  <link
+    name="right_rs_link">
+    <inertial>
+      <origin
+        xyz="0.000246214165129544 -6.06046655313719E-05 -0.0130485162930174"
+        rpy="0 0 0" />
+      <mass
+        value="0.0447522720135289" />
+      <inertia
+        ixx="3.94473364618722E-06"
+        ixy="-2.8266862706328E-09"
+        ixz="2.44342132311179E-07"
+        iyy="2.73621025309841E-05"
+        iyz="-1.18354833773588E-09"
+        izz="2.72775448530414E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/right_rs_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finall/meshes/right_rs_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_rs_joint"
+    type="fixed">
+    <origin
+      xyz="0.291429416827163 -0.0630797813490415 0.219229621554835"
+      rpy="1.46278949747624 0 1.11167035446073" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_rs_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

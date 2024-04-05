@@ -3,8 +3,8 @@ publish_rate: 50
 
 # Our template  ${prefix}_right_wheel_joint
 
-left_wheel: ['drive_wheel_left_joint']
-right_wheel: ['drive_wheel_right_joint']
+left_wheel: ['drive_left_joint']
+right_wheel: ['drive_right_joint']
 
 wheel_separation: 0.44
 wheel_radius: 0.0964415 #wheel radius

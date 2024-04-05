@@ -6,6 +6,8 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /TF1
+        - /TF1/Frames1
       Splitter Ratio: 0.5
     Tree Height: 549
   - Class: rviz/Selection
@@ -57,27 +59,35 @@ Visualization Manager:
       Filter (whitelist): ""
       Frame Timeout: 15
       Frames:
-        All Enabled: true
+        All Enabled: false
         base_link:
           Value: true
-        caster_fl:
-          Value: true
-        caster_fr:
-          Value: true
-        caster_rl:
-          Value: true
-        caster_rr:
-          Value: true
-        drive_wheel_left:
-          Value: true
-        drive_wheel_right:
-          Value: true
-        lidar_link:
-          Value: true
-        rs_left:
-          Value: true
-        rs_right:
-          Value: true
+        bl_caster_holder_link:
+          Value: false
+        bl_caster_wheel_link:
+          Value: false
+        br_caster_holder_link:
+          Value: false
+        br_caster_wheel_link:
+          Value: false
+        drive_left_link:
+          Value: false
+        drive_right_link:
+          Value: false
+        fl_caster_holder_link:
+          Value: false
+        fl_caster_wheel_link:
+          Value: false
+        fr_caster_holder_link:
+          Value: false
+        fr_caster_wheel_link:
+          Value: false
+        front_lidar_link:
+          Value: false
+        left_rs_link:
+          Value: false
+        right_rs_link:
+          Value: false
       Marker Alpha: 1
       Marker Scale: 1
       Name: TF
@@ -86,41 +96,115 @@ Visualization Manager:
       Show Names: true
       Tree:
         base_link:
-          caster_fl:
+          bl_caster_holder_link:
+            bl_caster_wheel_link:
+              {}
+          br_caster_holder_link:
+            br_caster_wheel_link:
+              {}
+          drive_left_link:
             {}
-          caster_fr:
+          drive_right_link:
             {}
-          caster_rl:
+          fl_caster_holder_link:
+            fl_caster_wheel_link:
+              {}
+          fr_caster_holder_link:
+            fr_caster_wheel_link:
+              {}
+          front_lidar_link:
             {}
-          caster_rr:
+          left_rs_link:
             {}
-          drive_wheel_left:
-            {}
-          drive_wheel_right:
-            {}
-          lidar_link:
-            {}
-          rs_left:
-            {}
-          rs_right:
+          right_rs_link:
             {}
       Update Interval: 0
       Value: true
     - Alpha: 1
       Class: rviz/RobotModel
       Collision Enabled: false
-      Enabled: false
+      Enabled: true
       Links:
         All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        bl_caster_holder_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        bl_caster_wheel_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        br_caster_holder_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        br_caster_wheel_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        drive_left_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        drive_right_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        fl_caster_holder_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        fl_caster_wheel_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        fr_caster_holder_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        fr_caster_wheel_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_lidar_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_rs_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_rs_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
       Update Interval: 0
-      Value: false
+      Value: true
       Visual Enabled: true
   Enabled: true
   Global Options:

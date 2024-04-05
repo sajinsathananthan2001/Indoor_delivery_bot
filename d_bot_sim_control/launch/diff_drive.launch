@@ -1,6 +1,6 @@
 <launch>
   <!-- arguments -->
-  <arg name="model" default="$(find d_bot_description)/urdf/d_bot_main.urdf"/>
+  <arg name="model" default="$(find d_bot_description)/urdf/d_bot_full.xacro"/>
   <arg name="rvizconfig" default="$(find d_bot_description)/rviz/rviz.rviz" />
 
   <!-- gazebo -->

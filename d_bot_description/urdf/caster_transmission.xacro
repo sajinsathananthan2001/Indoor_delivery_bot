@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="d_bot">
+    
+
+    <transmission name="left_front_wheel_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="left_front_wheel_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+      <joint name="fl_caster_wheel_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+
+
+
+
+    <transmission name="left_rear_wheel_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="left_rear_wheel_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+      <joint name="bl_caster_wheel_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+
+
+
+
+     <transmission name="right_front_wheel_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="right_front_wheel_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+      <joint name="fr_caster_wheel_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+
+
+    
+
+     <transmission name="right_rear_wheel_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="right_rear_wheel_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+      <joint name="br_caster_wheel_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+
+</robot>

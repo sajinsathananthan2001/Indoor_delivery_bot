@@ -470,11 +470,12 @@
       </geometry>
     </collision>
   </link>
+  <!-- xyz="-7.34417430403589E-06 0.204110516837841 0.0500007440772356" -->
   <joint
     name="drive_wheel_left_joint"
     type="continuous">
     <origin
-      xyz="-7.34417430403589E-06 0.204110516837841 0.0500007440772356"
+      xyz="-7.34417430403589E-06 0.204110516837841 0.0600007440772356"
       rpy="0 0 0" />
     <parent
       link="base_link" />
@@ -529,7 +530,7 @@
     name="drive_wheel_right_joint"
     type="continuous">
     <origin
-      xyz="7.34417430392487E-06 -0.204110516837841 0.0500007440772355"
+      xyz="7.34417430392487E-06 -0.204110516837841 0.0600007440772355"
       rpy="0 0 0" />
     <parent
       link="base_link" />
