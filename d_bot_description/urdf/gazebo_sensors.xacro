@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="d_bot">
+    
+
+<!-- imu_plugin -->
+
+  <gazebo reference="imu_link">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>__default_topic__</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>imu</topicName>
+        <bodyName>imu_link</bodyName>
+        <updateRateHZ>10.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>imu_link</frameName>
+        <initialOrientationAsReference>false</initialOrientationAsReference>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>
+
+
+
+<!-- Depth camera Left-->
+ 
+<gazebo reference="left_rs_link">
+  <sensor type="depth" name="left_camera">
+      <always_on>true</always_on>
+      <visualize>true</visualize>
+      <update_rate>20.0</update_rate>
+      <camera>
+         <horizontal_fov>2.14</horizontal_fov> 
+          <image>
+              <format>B8G8R8</format>
+              <width>1280</width>
+              <height>720</height>
+          </image>
+          <clip>
+              <near>0.02</near>
+              <far>12.0</far>
+          </clip>
+      </camera>
+      <plugin name="kinect_camera_controller" filename="libgazebo_ros_openni_kinect.so">
+        <baseline>0.2</baseline>
+        <alwaysOn>true</alwaysOn>
+        <!-- Keep this zero, update_rate in the parent <sensor> tag
+          will control the frame rate. -->
+        <cameraName>camera3</cameraName>
+        <imageTopicName>/camera3/color/image_raw</imageTopicName>
+        <cameraInfoTopicName>/camera3/color/camera_info</cameraInfoTopicName>
+        <depthImageTopicName>/camera3/depth/image_raw</depthImageTopicName>
+        <depthImageCameraInfoTopicName>/camera3/depth/camera_info</depthImageCameraInfoTopicName>
+        <pointCloudTopicName>/camera3/depth/points</pointCloudTopicName>
+        <frameName>camera_frame_optical_3</frameName>
+        <pointCloudCutoff>0.01</pointCloudCutoff>
+        <pointCloudCutoffMax>20.0</pointCloudCutoffMax>
+        <distortionK1>0</distortionK1>
+        <distortionK2>0</distortionK2>
+        <distortionK3>0</distortionK3>
+        <distortionT1>0</distortionT1>
+        <distortionT2>0</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0</Cx>
+        <Cy>0</Cy>
+        <focalLength>0</focalLength>
+        <hackBaseline>0</hackBaseline>
+
+      </plugin>
+  </sensor>
+</gazebo>
+
+
+
+</robot>

@@ -36,4 +36,5 @@
 <xacro:set_castor_joint_friction link="fl_caster_holder_link" friction="1"/>
 <xacro:set_castor_joint_friction link="bl_caster_holder_link" friction="1"/>
 
+
 </robot>
