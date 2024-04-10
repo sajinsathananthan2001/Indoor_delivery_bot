@@ -3,7 +3,7 @@
 
     <xacro:include filename="$(find d_bot_description)/urdf/caster_transmission.xacro" />
     <xacro:include filename="$(find d_bot_description)/urdf/caster_holder_transmission.xacro" />
-    <xacro:include filename="$(find d_bot_description)/urdf/gazebo.xacro" />
+    <xacro:include filename="$(find d_bot_description)/urdf/robot.gazebo.xacro" />
 
 
     <xacro:macro name="default_inertial" params="mass">
@@ -12,19 +12,33 @@
             <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
         </inertial>
     </xacro:macro>
+  <link name="base_footprint"/>
 
+  <joint
+    name="base_joint"
+    type="fixed">
+    <origin
+      xyz="0.0 0.0 0.0"
+      rpy="0.0 0 0" />
+    <parent
+      link="base_footprint" />
+    <child
+      link="base_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
 
   <!-- base_link -->
   <link
     name="base_link">
-    <xacro:default_inertial mass="100"/>
+    <xacro:default_inertial mass="10"/>
     <visual>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/base_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/base_link.STL" />
       </geometry>
       <material
         name="">
@@ -38,7 +52,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/base_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/base_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -54,7 +68,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/fl_caster_holder_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/fl_caster_holder_link.STL" />
       </geometry>
       <material
         name="">
@@ -68,7 +82,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/fl_caster_holder_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/fl_caster_holder_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -98,7 +112,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/fl_caster_wheel_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/fl_caster_wheel_link.STL" />
       </geometry>
       <material
         name="">
@@ -112,7 +126,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/fl_caster_wheel_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/fl_caster_wheel_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -142,7 +156,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/fr_caster_holder_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/fr_caster_holder_link.STL" />
       </geometry>
       <material
         name="">
@@ -156,7 +170,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/fr_caster_holder_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/fr_caster_holder_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -186,7 +200,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/fr_caster_wheel_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/fr_caster_wheel_link.STL" />
       </geometry>
       <material
         name="">
@@ -200,7 +214,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/fr_caster_wheel_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/fr_caster_wheel_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -230,7 +244,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/bl_caster_holder_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/bl_caster_holder_link.STL" />
       </geometry>
       <material
         name="">
@@ -244,7 +258,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/bl_caster_holder_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/bl_caster_holder_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -274,7 +288,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/bl_caster_wheel_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/bl_caster_wheel_link.STL" />
       </geometry>
       <material
         name="">
@@ -288,7 +302,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/bl_caster_wheel_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/bl_caster_wheel_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -318,7 +332,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/br_caster_holder_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/br_caster_holder_link.STL" />
       </geometry>
       <material
         name="">
@@ -332,7 +346,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/br_caster_holder_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/br_caster_holder_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -363,7 +377,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/br_caster_wheel_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/br_caster_wheel_link.STL" />
       </geometry>
       <material
         name="">
@@ -377,7 +391,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/br_caster_wheel_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/br_caster_wheel_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -407,7 +421,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/drive_left_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/drive_left_link.STL" />
       </geometry>
       <material
         name="">
@@ -421,7 +435,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/drive_left_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/drive_left_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -436,7 +450,7 @@
     <child
       link="drive_left_link" />
     <axis
-      xyz="1 0 0" />
+      xyz="-1 0 0" />
   </joint>
 
 
@@ -451,7 +465,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/drive_right_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/drive_right_link.STL" />
       </geometry>
       <material
         name="">
@@ -465,7 +479,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/drive_right_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/drive_right_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -486,48 +500,24 @@
 
 
 <!-- front_lidar_link -->
-  <link
-    name="front_lidar_link">
-    <xacro:default_inertial mass="2"/>
+<joint name="front_lidar_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="front_lidar_link"/>
+        <origin xyz="0.28109 0 0.13" rpy="0 0 0"/>
+</joint>
+
+<link name="front_lidar_link">
     <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://d_bot_description/meshes/front_lidar_link.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 0.4" />
-      </material>
+        <geometry>
+            <cylinder radius="0.04" length="0.04"/>
+        </geometry>
     </visual>
     <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://d_bot_description/meshes/front_lidar_link.STL" />
-      </geometry>
+        <geometry>
+            <cylinder radius="0.04" length="0.04"/>
+        </geometry>
     </collision>
-  </link>
-  <joint
-    name="front_lidar_joint"
-    type="fixed">
-    <origin
-      xyz="0.32109 0 0.1123"
-      rpy="1.5708 0 1.5708" />
-    <parent
-      link="base_link" />
-    <child
-      link="front_lidar_link" />
-    <axis
-      xyz="0 0 0" />
-  </joint>
-
-
+</link>
 
   <!-- left_rs_link -->
   <link
@@ -536,10 +526,10 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="1.5708 0 1.5708" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/left_rs_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/left_rs_link.STL" />
       </geometry>
       <material
         name="">
@@ -550,10 +540,10 @@
     <collision>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="1.5708 0 1.5708" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/left_rs_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/left_rs_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -562,13 +552,13 @@
     type="fixed">
     <origin
       xyz="0.29154 0.063516 0.2198"
-      rpy="1.4628 0 1.9502" />
+      rpy="0 0 0.2181662" />
     <parent
       link="base_link" />
     <child
       link="left_rs_link" />
     <axis
-      xyz="0 0 0" />
+      xyz="0 0 0"/>
   </joint>
 
 
@@ -580,10 +570,10 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="1.5708 0 1.5708" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/right_rs_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/right_rs_link.STL" />
       </geometry>
       <material
         name="">
@@ -594,10 +584,10 @@
     <collision>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="1.5708 0 1.5708" />
       <geometry>
         <mesh
-          filename="package://d_bot_description/meshes/right_rs_link.STL" />
+          filename="file:///$(find d_bot_description)/meshes/right_rs_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -606,7 +596,7 @@
     type="fixed">
     <origin
       xyz="0.291429416827163 -0.0630797813490415 0.219229621554835"
-      rpy="1.46278949747624 0 1.11167035446073" />
+      rpy="0 0 -0.2181662" />
     <parent
       link="base_link" />
     <child
