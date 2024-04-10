@@ -520,33 +520,26 @@
 </link>
 
   <!-- left_rs_link -->
-  <link
-    name="left_rs_link">
+  <link name="left_camera">
     <xacro:default_inertial mass="1"/>
     <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="1.5708 0 1.5708" />
+      <origin xyz="0 0 0" rpy="1.5708 0 1.5708" />
       <geometry>
         <mesh
           filename="file:///$(find d_bot_description)/meshes/left_rs_link.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-      </material>
     </visual>
     <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="1.5708 0 1.5708" />
+      <origin xyz="0 0 0" rpy="1.5708 0 1.5708" />
       <geometry>
         <mesh
           filename="file:///$(find d_bot_description)/meshes/left_rs_link.STL" />
       </geometry>
     </collision>
   </link>
+
+  <link name="left_camera_frame" />
+
   <joint
     name="left_rs_joint"
     type="fixed">
@@ -556,7 +549,20 @@
     <parent
       link="base_link" />
     <child
-      link="left_rs_link" />
+      link="left_camera" />
+    <axis
+      xyz="0 0 0"/>
+  </joint>
+
+  <joint name="left_camera_frame_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="-1.5708 0 -1.5708" />
+    <parent
+      link="left_camera" />
+    <child
+      link="left_camera_frame" />
     <axis
       xyz="0 0 0"/>
   </joint>
@@ -565,7 +571,7 @@
 
   <!-- right_rs_link -->
   <link
-    name="right_rs_link">
+    name="right_camera">
     <xacro:default_inertial mass="1"/>
     <visual>
       <origin
@@ -600,10 +606,83 @@
     <parent
       link="base_link" />
     <child
-      link="right_rs_link" />
+      link="right_camera" />
     <axis
       xyz="0 0 0" />
   </joint>
+
+  <link name="right_camera_frame" />
+
+  <joint name="right_camera_frame_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="-1.5708 0 -1.5708" />
+    <parent
+      link="right_camera" />
+    <child
+      link="right_camera_frame" />
+    <axis
+      xyz="0 0 0"/>
+  </joint>
+
+
+  <gazebo>
+    <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+
+      <ros>
+        <namespace></namespace>
+        <remapping>cmd_vel:=cmd_vel</remapping>
+        <remapping>odom:=odom</remapping>
+      </ros>
+
+      <update_rate>30</update_rate>
+
+      <left_joint>drive_left_joint</left_joint>
+      <right_joint>drive_right_joint</right_joint>
+
+      <wheel_separation>0.44</wheel_separation>
+      <wheel_diameter>0.2</wheel_diameter>
+
+      <max_wheel_torque>200</max_wheel_torque>
+      <max_wheel_acceleration>6.0</max_wheel_acceleration>
+
+      <command_topic>cmd_vel</command_topic>
+
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <publish_wheel_tf>false</publish_wheel_tf>
+
+      <odometry_topic>odom</odometry_topic>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_footprint</robot_base_frame>
+    </plugin>
+
+    <plugin name="robot_joint_state" filename="libgazebo_ros_joint_state_publisher.so">
+      <ros>
+        <remapping>~/out:=joint_states</remapping>
+      </ros>
+      <update_rate>30</update_rate>
+      <joint_name>drive_left_joint</joint_name>
+      <joint_name>drive_right_joint</joint_name>
+      <joint_name>br_caster_wheel_joint</joint_name>
+      <joint_name>fr_caster_wheel_joint</joint_name>
+      <joint_name>bl_caster_wheel_joint</joint_name>
+      <joint_name>fl_caster_wheel_joint</joint_name>
+      <joint_name>br_caster_holder_joint</joint_name>
+      <joint_name>bl_caster_holder_joint</joint_name>
+      <joint_name>fr_caster_holder_joint</joint_name>
+      <joint_name>fl_caster_holder_joint</joint_name>
+    </plugin>      
+
+</gazebo>
+
+
+
+
+
+
+
 
 
   <!-- for left drive wheel -->

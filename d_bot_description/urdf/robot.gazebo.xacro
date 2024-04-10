@@ -48,7 +48,7 @@
   <gazebo reference="front_lidar_link">
     <sensor name="laser" type="ray">
       <pose> 0 0 0 0 0 0 </pose>
-      <visualize>true</visualize>
+      <visualize>false</visualize>
       <update_rate>10</update_rate>
       <ray> 
         <scan>
@@ -65,7 +65,7 @@
       </ray>
       <plugin name="laser_controller" filename="libgazebo_ros_ray_sensor.so">
         <ros>
-            <argument>~/out:=scan</argument>
+            <argument>--ros-args --remap ~/out:=scan</argument>
         </ros>
         <output_type>sensor_msgs/LaserScan</output_type>
         <frame_name>front_lidar_link</frame_name>
@@ -73,286 +73,73 @@
     </sensor>
   </gazebo>
 
-  <gazebo>
-    <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
-
-      <ros>
-        <namespace></namespace>
-        <remapping>cmd_vel:=cmd_vel</remapping>
-        <remapping>odom:=odom</remapping>
-      </ros>
-
-      <update_rate>30</update_rate>
-
-      <left_joint>drive_left_joint</left_joint>
-      <right_joint>drive_right_joint</right_joint>
-
-      <wheel_separation>0.44</wheel_separation>
-      <wheel_diameter>0.2</wheel_diameter>
-
-      <max_wheel_torque>200</max_wheel_torque>
-      <max_wheel_acceleration>6.0</max_wheel_acceleration>
-
-      <command_topic>cmd_vel</command_topic>
-
-      <publish_odom>true</publish_odom>
-      <publish_odom_tf>true</publish_odom_tf>
-      <publish_wheel_tf>false</publish_wheel_tf>
-
-      <odometry_topic>odom</odometry_topic>
-      <odometry_frame>odom</odometry_frame>
-      <robot_base_frame>base_footprint</robot_base_frame>
-    </plugin>
-
-    <plugin name="robot_joint_state" filename="libgazebo_ros_joint_state_publisher.so">
-      <ros>
-        <remapping>~/out:=joint_states</remapping>
-      </ros>
-      <update_rate>30</update_rate>
-      <joint_name>drive_left_joint</joint_name>
-      <joint_name>drive_right_joint</joint_name>
-      <joint_name>br_caster_wheel_joint</joint_name>
-      <joint_name>fr_caster_wheel_joint</joint_name>
-      <joint_name>bl_caster_wheel_joint</joint_name>
-      <joint_name>fl_caster_wheel_joint</joint_name>
-      <joint_name>br_caster_holder_joint</joint_name>
-      <joint_name>bl_caster_holder_joint</joint_name>
-      <joint_name>fr_caster_holder_joint</joint_name>
-      <joint_name>fl_caster_holder_joint</joint_name>
-    </plugin>      
-
+<gazebo reference="right_camera">
+    <sensor name="right_camera" type="depth">
+        <always_on>true</always_on>
+        <update_rate>15</update_rate>
+        <pose>0 0 0 0 0 0</pose>
+        <camera name="right_camera">
+            <horizontal_fov>1.46608</horizontal_fov>
+            <image>
+                <width>640</width>
+                <height>480</height>
+                <format>B8G8R8</format>
+            </image>
+            <clip>
+                <near>0.05</near>
+                <far>8</far>
+            </clip>
+        </camera>
+        <plugin name="left_camera_intel_realsense_d430_depth_driver" filename="libgazebo_ros_camera.so">
+            <ros>
+                <namespace>/right_camera</namespace>
+                <remapping>right_camera/image_raw:=color/image_raw</remapping>
+                <remapping>right_camera/depth/image_raw:=depth/image_rect_raw</remapping>
+                <remapping>right_camera/camera_info:=camera_info</remapping>
+                <remapping>right_camera/depth/camera_info:=depth/camera_info</remapping>
+                <remapping>right_camera/points:=depth/points</remapping>
+            </ros>
+            <camera_name>right_camera</camera_name>
+            <frame_name>right_camera_frame</frame_name>
+            <hack_baseline>0.07</hack_baseline>
+            <min_depth>0.05</min_depth>
+            <max_depth>8.0</max_depth>
+        </plugin>
+    </sensor>
 </gazebo>
 
-  <gazebo reference='left_rs_link' >
-  <pose>0 0 0 0 0 1.5708</pose>
-      <sensor name="cameradepth" type="depth">
-        <camera name="camera_left">
-          <horizontal_fov>1.57</horizontal_fov>
-          <image>
-            <width>1280</width>
-            <height>720</height>
-          </image>
-          <clip>
-            <near>0.1</near>
-            <far>100</far>
-          </clip>
-          <noise>
-            <type>gaussian</type>
-            <mean>0.0</mean>
-            <stddev>0.100</stddev>
-          </noise>
+<gazebo reference="left_camera">
+    <sensor name="left_camera" type="depth">
+        <always_on>true</always_on>
+        <update_rate>15</update_rate>
+        <pose>0 0 0 0 0 0</pose>
+        <camera name="left_camera">
+            <horizontal_fov>1.46608</horizontal_fov>
+            <image>
+                <width>640</width>
+                <height>480</height>
+                <format>B8G8R8</format>
+            </image>
+            <clip>
+                <near>0.05</near>
+                <far>8</far>
+            </clip>
         </camera>
-        <always_on>1</always_on>
-        <update_rate>30</update_rate>
-        <visualize>0</visualize>
-      </sensor>
-      <sensor name="cameracolor" type="camera">
-        <camera name="camera_left">
-          <horizontal_fov>1.57</horizontal_fov>
-          <image>
-            <width>1280</width>
-            <height>720</height>
-            <format>RGB_INT8</format>
-          </image>
-          <clip>
-            <near>0.1</near>
-            <far>100</far>
-          </clip>
-          <noise>
-            <type>gaussian</type>
-            <mean>0.0</mean>
-            <stddev>0.007</stddev>
-          </noise>
-        </camera>
-        <always_on>1</always_on>
-        <update_rate>30</update_rate>
-        <visualize>1</visualize>
-      </sensor>
-      <sensor name="cameraired1" type="camera">
-        <camera name="camera_left">
-          <horizontal_fov>1.57</horizontal_fov>
-          <image>
-            <width>1280</width>
-            <height>720</height>
-            <format>L_INT8</format>
-          </image>
-          <clip>
-            <near>0.1</near>
-            <far>100</far>
-          </clip>
-          <noise>
-            <type>gaussian</type>
-            <mean>0.0</mean>
-            <stddev>0.05</stddev>
-          </noise>
-        </camera>
-        <always_on>1</always_on>
-        <update_rate>1</update_rate>
-        <visualize>0</visualize>
-      </sensor>
-      <sensor name="cameraired2" type="camera">
-        <camera name="camera_left">
-          <horizontal_fov>1.57</horizontal_fov>
-          <image>
-            <width>1280</width>
-            <height>720</height>
-            <format>L_INT8</format>
-          </image>
-          <clip>
-            <near>0.1</near>
-            <far>100</far>
-          </clip>
-          <noise>
-            <type>gaussian</type>
-            <mean>0.0</mean>
-            <stddev>0.05</stddev>
-          </noise>
-        </camera>
-        <always_on>1</always_on>
-        <update_rate>1</update_rate>
-        <visualize>0</visualize>
-      </sensor>
-
-    <plugin name="camera_left" filename="librealsense_gazebo_plugin.so">
-      <prefix>camera_left</prefix>
-      <depthUpdateRate>30.0</depthUpdateRate>
-      <colorUpdateRate>30.0</colorUpdateRate>
-      <infraredUpdateRate>1.0</infraredUpdateRate>
-      <depthTopicName>aligned_depth_to_color/image_raw</depthTopicName>
-      <depthCameraInfoTopicName>depth/camera_info</depthCameraInfoTopicName>
-      <colorTopicName>color/image_raw</colorTopicName>
-      <colorCameraInfoTopicName>color/camera_info</colorCameraInfoTopicName>
-      <infrared1TopicName>infra1/image_raw</infrared1TopicName>
-      <infrared1CameraInfoTopicName>infra1/camera_info</infrared1CameraInfoTopicName>
-      <infrared2TopicName>infra2/image_raw</infrared2TopicName>
-      <infrared2CameraInfoTopicName>infra2/camera_info</infrared2CameraInfoTopicName>
-      <colorOpticalframeName>camera_color_optical_frame</colorOpticalframeName>
-      <depthOpticalframeName>camera_depth_optical_frame</depthOpticalframeName>
-      <infrared1OpticalframeName>camera_left_ir_optical_frame</infrared1OpticalframeName>
-      <infrared2OpticalframeName>camera_right_ir_optical_frame</infrared2OpticalframeName>
-      <rangeMinDepth>0.3</rangeMinDepth>
-      <rangeMaxDepth>3.0</rangeMaxDepth>
-      <pointCloud>true</pointCloud>
-      <pointCloudTopicName>depth/color/points</pointCloudTopicName>
-      <pointCloudCutoff>0.3</pointCloudCutoff>
-    </plugin>
-</gazebo>
-
-
-
-
-<gazebo reference='right_rs_link' >
-  <pose>0 0 0 0 0 1.5708</pose>
-      <sensor name="cameradepth" type="depth">
-        <camera name="camera_right">
-          <horizontal_fov>1.57</horizontal_fov>
-          <image>
-            <width>1280</width>
-            <height>720</height>
-          </image>
-          <clip>
-            <near>0.1</near>
-            <far>100</far>
-          </clip>
-          <noise>
-            <type>gaussian</type>
-            <mean>0.0</mean>
-            <stddev>0.100</stddev>
-          </noise>
-        </camera>
-        <always_on>1</always_on>
-        <update_rate>30</update_rate>
-        <visualize>0</visualize>
-      </sensor>
-      <sensor name="cameracolor" type="camera">
-        <camera name="camera_right">
-          <horizontal_fov>1.57</horizontal_fov>
-          <image>
-            <width>1280</width>
-            <height>720</height>
-            <format>RGB_INT8</format>
-          </image>
-          <clip>
-            <near>0.1</near>
-            <far>100</far>
-          </clip>
-          <noise>
-            <type>gaussian</type>
-            <mean>0.0</mean>
-            <stddev>0.007</stddev>
-          </noise>
-        </camera>
-        <always_on>1</always_on>
-        <update_rate>30</update_rate>
-        <visualize>1</visualize>
-      </sensor>
-      <sensor name="cameraired1" type="camera">
-        <camera name="camera_right">
-          <horizontal_fov>1.57</horizontal_fov>
-          <image>
-            <width>1280</width>
-            <height>720</height>
-            <format>L_INT8</format>
-          </image>
-          <clip>
-            <near>0.1</near>
-            <far>100</far>
-          </clip>
-          <noise>
-            <type>gaussian</type>
-            <mean>0.0</mean>
-            <stddev>0.05</stddev>
-          </noise>
-        </camera>
-        <always_on>1</always_on>
-        <update_rate>1</update_rate>
-        <visualize>0</visualize>
-      </sensor>
-      <sensor name="cameraired2" type="camera">
-        <camera name="camera_right">
-          <horizontal_fov>1.57</horizontal_fov>
-          <image>
-            <width>1280</width>
-            <height>720</height>
-            <format>L_INT8</format>
-          </image>
-          <clip>
-            <near>0.1</near>
-            <far>100</far>
-          </clip>
-          <noise>
-            <type>gaussian</type>
-            <mean>0.0</mean>
-            <stddev>0.05</stddev>
-          </noise>
-        </camera>
-        <always_on>1</always_on>
-        <update_rate>1</update_rate>
-        <visualize>0</visualize>
-      </sensor>
-
-    <plugin name="camera_right" filename="librealsense_gazebo_plugin.so">
-      <prefix>camera_right</prefix>
-      <depthUpdateRate>30.0</depthUpdateRate>
-      <colorUpdateRate>30.0</colorUpdateRate>
-      <infraredUpdateRate>1.0</infraredUpdateRate>
-      <depthTopicName>aligned_depth_to_color/image_raw</depthTopicName>
-      <depthCameraInfoTopicName>depth/camera_info</depthCameraInfoTopicName>
-      <colorTopicName>color/image_raw</colorTopicName>
-      <colorCameraInfoTopicName>color/camera_info</colorCameraInfoTopicName>
-      <infrared1TopicName>infra1/image_raw</infrared1TopicName>
-      <infrared1CameraInfoTopicName>infra1/camera_info</infrared1CameraInfoTopicName>
-      <infrared2TopicName>infra2/image_raw</infrared2TopicName>
-      <infrared2CameraInfoTopicName>infra2/camera_info</infrared2CameraInfoTopicName>
-      <colorOpticalframeName>camera_color_optical_frame</colorOpticalframeName>
-      <depthOpticalframeName>camera_depth_optical_frame</depthOpticalframeName>
-      <infrared1OpticalframeName>camera_left_ir_optical_frame</infrared1OpticalframeName>
-      <infrared2OpticalframeName>camera_right_ir_optical_frame</infrared2OpticalframeName>
-      <rangeMinDepth>0.3</rangeMinDepth>
-      <rangeMaxDepth>3.0</rangeMaxDepth>
-      <pointCloud>true</pointCloud>
-      <pointCloudTopicName>depth/color/points</pointCloudTopicName>
-      <pointCloudCutoff>0.3</pointCloudCutoff>
-    </plugin>
+        <plugin name="left_camera_intel_realsense_d430_depth_driver" filename="libgazebo_ros_camera.so">
+            <ros>
+                <namespace>/left_camera</namespace>
+                <remapping>left_camera/image_raw:=color/image_raw</remapping>
+                <remapping>left_camera/depth/image_raw:=depth/image_rect_raw</remapping>
+                <remapping>left_camera/camera_info:=camera_info</remapping>
+                <remapping>left_camera/depth/camera_info:=depth/camera_info</remapping>
+                <remapping>left_camera/points:=depth/points</remapping>
+            </ros>
+            <camera_name>left_camera</camera_name>
+            <frame_name>left_camera_frame</frame_name>
+            <hack_baseline>0.07</hack_baseline>
+            <min_depth>0.05</min_depth>
+            <max_depth>8.0</max_depth>
+        </plugin>
+    </sensor>
 </gazebo>
 </robot>

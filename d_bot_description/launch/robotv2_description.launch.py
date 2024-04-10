@@ -45,7 +45,7 @@ def generate_launch_description():
     
     urdf_path = os.path.join(get_package_share_directory('d_bot_description'), 'urdf')
     urdf_path=urdf_path + '/d_bot_full.urdf.xacro'
-    print(urdf_path)
+    # print(urdf_path)
     # RViz 
     rviz_config_file = get_package_share_directory('d_bot_description') + "/rviz/urdf.rviz"
     rviz_node = Node(package='rviz2',
