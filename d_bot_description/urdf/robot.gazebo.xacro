@@ -45,30 +45,30 @@
     </sensor>
   </gazebo>
 
-  <gazebo reference="front_lidar_link">
+  <gazebo reference="lidar_link">
     <sensor name="laser" type="ray">
       <pose> 0 0 0 0 0 0 </pose>
-      <visualize>false</visualize>
+      <visualize>true</visualize>
       <update_rate>10</update_rate>
       <ray> 
         <scan>
             <horizontal>
                 <samples>360</samples>
-                <min_angle>-3.14</min_angle>
-                <max_angle>3.14</max_angle>
+                <min_angle>-1.74533</min_angle>
+                <max_angle>1.74533</max_angle>
             </horizontal>
         </scan>
         <range>
-            <min>0.3</min>
+            <min>0.05</min>
             <max>12</max>
         </range>
       </ray>
       <plugin name="laser_controller" filename="libgazebo_ros_ray_sensor.so">
         <ros>
-            <argument>--ros-args --remap ~/out:=scan</argument>
+            <argument>~/out:=scan</argument>
         </ros>
         <output_type>sensor_msgs/LaserScan</output_type>
-        <frame_name>front_lidar_link</frame_name>
+        <frame_name>lidar_link</frame_name>
       </plugin>
     </sensor>
   </gazebo>
