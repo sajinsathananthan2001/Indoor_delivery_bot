@@ -95,7 +95,58 @@
         <depthImageTopicName>/camera3/depth/image_raw</depthImageTopicName>
         <depthImageCameraInfoTopicName>/camera3/depth/camera_info</depthImageCameraInfoTopicName>
         <pointCloudTopicName>/camera3/depth/points</pointCloudTopicName>
-        <frameName>camera_frame_optical_3</frameName>
+        <frameName>left_rs_visual_link</frameName>
+        <pointCloudCutoff>0.01</pointCloudCutoff>
+        <pointCloudCutoffMax>20.0</pointCloudCutoffMax>
+        <distortionK1>0</distortionK1>
+        <distortionK2>0</distortionK2>
+        <distortionK3>0</distortionK3>
+        <distortionT1>0</distortionT1>
+        <distortionT2>0</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0</Cx>
+        <Cy>0</Cy>
+        <focalLength>0</focalLength>
+        <hackBaseline>0</hackBaseline>
+
+      </plugin>
+  </sensor>
+</gazebo>
+
+
+
+
+<!-- Depth camera Left-->
+ 
+<gazebo reference="right_rs_link">
+  <sensor type="depth" name="right_camera">
+      <always_on>true</always_on>
+      <visualize>true</visualize>
+      <update_rate>20.0</update_rate>
+      <camera>
+         <horizontal_fov>2.14</horizontal_fov> 
+          <image>
+              <format>B8G8R8</format>
+              <width>1280</width>
+              <height>720</height>
+          </image>
+          <clip>
+              <near>0.02</near>
+              <far>12.0</far>
+          </clip>
+      </camera>
+      <plugin name="kinect_camera_controller" filename="libgazebo_ros_openni_kinect.so">
+        <baseline>0.2</baseline>
+        <alwaysOn>true</alwaysOn>
+        <!-- Keep this zero, update_rate in the parent <sensor> tag
+          will control the frame rate. -->
+        <cameraName>camera2</cameraName>
+        <imageTopicName>/camera2/color/image_raw</imageTopicName>
+        <cameraInfoTopicName>/camera2/color/camera_info</cameraInfoTopicName>
+        <depthImageTopicName>/camera2/depth/image_raw</depthImageTopicName>
+        <depthImageCameraInfoTopicName>/camera2/depth/camera_info</depthImageCameraInfoTopicName>
+        <pointCloudTopicName>/camera2/depth/points</pointCloudTopicName>
+        <frameName>right_rs_visual_link</frameName>
         <pointCloudCutoff>0.01</pointCloudCutoff>
         <pointCloudCutoffMax>20.0</pointCloudCutoffMax>
         <distortionK1>0</distortionK1>

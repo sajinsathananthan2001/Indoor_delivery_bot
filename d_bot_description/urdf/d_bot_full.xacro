@@ -566,8 +566,8 @@
     <xacro:default_inertial mass="1"/>
     <visual>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="-0.007 0 0"
+        rpy="1.5708 0 1.7" />
       <geometry>
         <mesh
           filename="package://d_bot_description/meshes/left_rs_link.STL" />
@@ -592,12 +592,31 @@
     name="left_rs_joint"
     type="fixed">
     <origin
-      xyz="0.29154 0.063516 0.2198"
-      rpy="1.4628 0 1.9502" />
+      xyz="0.3 0.063516 0.2198"
+      rpy="0 0 0.2" />
     <parent
       link="base_link" />
     <child
       link="left_rs_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <!-- for visual -->
+  <link
+    name="left_rs_visual_link">
+    <xacro:default_inertial mass="1"/>
+  </link>
+
+  <joint
+    name="left_rs_visual_joint"
+    type="fixed">
+    <origin
+      xyz="0.3 0.063516 0.2198"
+      rpy="-1.5708 0 -1.3708" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_rs_visual_link" />
     <axis
       xyz="0 0 0" />
   </joint>
@@ -610,8 +629,8 @@
     <xacro:default_inertial mass="1"/>
     <visual>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="-0.007 0 0"
+        rpy="1.46278949747624 0 1.35" />
       <geometry>
         <mesh
           filename="package://d_bot_description/meshes/right_rs_link.STL" />
@@ -636,12 +655,31 @@
     name="right_rs_joint"
     type="fixed">
     <origin
-      xyz="0.291429416827163 -0.0630797813490415 0.219229621554835"
-      rpy="1.46278949747624 0 1.11167035446073" />
+      xyz="0.3 -0.0630797813490415 0.219229621554835"
+      rpy="0 0 -0.2" />
     <parent
       link="base_link" />
     <child
       link="right_rs_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <!-- for visual -->
+  <link
+    name="right_rs_visual_link">
+    <xacro:default_inertial mass="1"/>
+  </link>
+
+  <joint
+    name="right_rs_visual_joint"
+    type="fixed">
+    <origin
+      xyz="0.3 -0.0630797813490415 0.219229621554835"
+      rpy="-1.5708 0 -1.7708" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_rs_visual_link" />
     <axis
       xyz="0 0 0" />
   </joint>
