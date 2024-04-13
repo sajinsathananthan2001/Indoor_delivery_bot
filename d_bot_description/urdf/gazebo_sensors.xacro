@@ -58,7 +58,7 @@
         </noise>
       </ray>
       <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
-        <topicName>/rrbot/laser/scan</topicName>
+        <topicName>/front/laser/scan</topicName>
         <frameName>front_lidar_link</frameName>
       </plugin>
     </sensor>
@@ -89,12 +89,12 @@
         <alwaysOn>true</alwaysOn>
         <!-- Keep this zero, update_rate in the parent <sensor> tag
           will control the frame rate. -->
-        <cameraName>camera3</cameraName>
-        <imageTopicName>/camera3/color/image_raw</imageTopicName>
-        <cameraInfoTopicName>/camera3/color/camera_info</cameraInfoTopicName>
-        <depthImageTopicName>/camera3/depth/image_raw</depthImageTopicName>
-        <depthImageCameraInfoTopicName>/camera3/depth/camera_info</depthImageCameraInfoTopicName>
-        <pointCloudTopicName>/camera3/depth/points</pointCloudTopicName>
+        <cameraName>left_camera</cameraName>
+        <imageTopicName>/left_camera/color/image_raw</imageTopicName>
+        <cameraInfoTopicName>/left_camera/color/camera_info</cameraInfoTopicName>
+        <depthImageTopicName>/left_camera/depth/image_raw</depthImageTopicName>
+        <depthImageCameraInfoTopicName>/left_camera/depth/camera_info</depthImageCameraInfoTopicName>
+        <pointCloudTopicName>/left_camera/depth/points</pointCloudTopicName>
         <frameName>left_rs_visual_link</frameName>
         <pointCloudCutoff>0.01</pointCloudCutoff>
         <pointCloudCutoffMax>20.0</pointCloudCutoffMax>
@@ -116,7 +116,7 @@
 
 
 
-<!-- Depth camera Left-->
+<!-- Depth camera right-->
  
 <gazebo reference="right_rs_link">
   <sensor type="depth" name="right_camera">
@@ -140,12 +140,12 @@
         <alwaysOn>true</alwaysOn>
         <!-- Keep this zero, update_rate in the parent <sensor> tag
           will control the frame rate. -->
-        <cameraName>camera2</cameraName>
-        <imageTopicName>/camera2/color/image_raw</imageTopicName>
-        <cameraInfoTopicName>/camera2/color/camera_info</cameraInfoTopicName>
-        <depthImageTopicName>/camera2/depth/image_raw</depthImageTopicName>
-        <depthImageCameraInfoTopicName>/camera2/depth/camera_info</depthImageCameraInfoTopicName>
-        <pointCloudTopicName>/camera2/depth/points</pointCloudTopicName>
+        <cameraName>right_camera</cameraName>
+        <imageTopicName>/right_camera/color/image_raw</imageTopicName>
+        <cameraInfoTopicName>/right_camera/color/camera_info</cameraInfoTopicName>
+        <depthImageTopicName>/right_camera/depth/image_raw</depthImageTopicName>
+        <depthImageCameraInfoTopicName>/right_camera/depth/camera_info</depthImageCameraInfoTopicName>
+        <pointCloudTopicName>/right_camera/depth/points</pointCloudTopicName>
         <frameName>right_rs_visual_link</frameName>
         <pointCloudCutoff>0.01</pointCloudCutoff>
         <pointCloudCutoffMax>20.0</pointCloudCutoffMax>

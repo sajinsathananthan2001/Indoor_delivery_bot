@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="camera1_name"              			default="left_camera"/>		<!-- Note: Replace with camera name -->
+    <arg name="camera2_name"              			default="right_camera"/>	
+
+
+    <group ns="$(arg camera1_name)">
+
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
+
+        <remap from="cloud_in" to="/left_camera/depth/points"/>
+        <remap from="scan" to="/left_rs_scan"/>
+        <rosparam>
+            target_frame: front_lidar_link # Leave disabled to output scan in pointcloud frame
+            transform_tolerance: 0.01
+            min_height: 0.1
+            max_height: 1.5
+
+            angle_min: -3.1416 # -M_PI/2
+            angle_max: 3.1416 # M_PI/2
+            angle_increment: 0.0087 # M_PI/360.0
+            scan_time: 0.3333
+            range_min: 0.45
+            range_max: 4.0
+            use_inf: true
+
+            # Concurrency level, affects number of pointclouds queued for processing and number of threads used
+            # 0 : Detect number of cores
+            # 1 : Single threaded
+            # 2 : inf : Parallelism level
+            concurrency_level: 1
+        </rosparam>
+
+    </node>
+
+    </group>
+
+
+    <group ns="$(arg camera2_name)">
+
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
+
+        <remap from="cloud_in" to="/right_camera/depth/points"/>
+        <remap from="scan" to="/right_rs_scan"/>
+        <rosparam>
+            target_frame: front_lidar_link # Leave disabled to output scan in pointcloud frame
+            transform_tolerance: 0.01
+            min_height: 0.1
+            max_height: 1.5
+
+            angle_min: -3.1416 # -M_PI/2
+            angle_max: 3.1416 # M_PI/2
+            angle_increment: 0.0087 # M_PI/360.0
+            scan_time: 0.3333
+            range_min: 0.45
+            range_max: 4.0
+            use_inf: true
+
+            # Concurrency level, affects number of pointclouds queued for processing and number of threads used
+            # 0 : Detect number of cores
+            # 1 : Single threaded
+            # 2 : inf : Parallelism level
+            concurrency_level: 1
+        </rosparam>
+
+    </node>
+        
+    </group>
+    
+
+</launch>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+    
+
+  <!-- SLAM - Map Building -->
+  <node name="gmapping" pkg="gmapping" type="slam_gmapping">
+    <rosparam file="$(find d_bot_navigation)/config/gmapping.yaml" command="load"/>
+    <remap from="scan" to="scan_merged"/>
+    
+  </node>
+
+    
+</launch>
