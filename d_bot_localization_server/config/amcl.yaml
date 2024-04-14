@@ -1,11 +1,11 @@
 amcl:
   ros__parameters:
     use_sim_time: True
-    alpha1: 0.2
-    alpha2: 0.2
-    alpha3: 0.2
-    alpha4: 0.2
-    alpha5: 0.2
+    alpha1: 0.02
+    alpha2: 0.02
+    alpha3: 0.02
+    alpha4: 0.02
+    # alpha5: 0.2
     base_frame_id: "base_footprint"
     beam_skip_distance: 0.5
     beam_skip_error_threshold: 0.9
@@ -18,7 +18,7 @@ amcl:
     laser_min_range: -1.0
     laser_model_type: "likelihood_field"
     max_beams: 60
-    max_particles: 8000
+    max_particles: 3000
     min_particles: 200
     odom_frame_id: "odom"
     pf_err: 0.05

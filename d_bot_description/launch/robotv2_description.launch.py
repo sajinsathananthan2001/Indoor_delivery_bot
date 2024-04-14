@@ -51,7 +51,7 @@ def generate_launch_description():
         'cafe.world'
     )
     # RViz 
-    rviz_config_file = get_package_share_directory('d_bot_description') + "/rviz/urdf.rviz"
+    rviz_config_file = get_package_share_directory('d_bot_navigation') + "/rviz/navigation.rviz"
     rviz_node = Node(package='rviz2',
                      executable='rviz2',
                      name='rviz2',
