@@ -232,6 +232,8 @@ Visualization Manager:
           Value: true
         lidar_link:
           Value: true
+        map:
+          Value: true
         odom:
           Value: true
         right_camera:
@@ -244,35 +246,36 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        odom:
-          base_footprint:
-            base_link:
-              bl_caster_holder_link:
-                bl_caster_wheel_link:
+        map:
+          odom:
+            base_footprint:
+              base_link:
+                bl_caster_holder_link:
+                  bl_caster_wheel_link:
+                    {}
+                br_caster_holder_link:
+                  br_caster_wheel_link:
+                    {}
+                drive_left_link:
                   {}
-              br_caster_holder_link:
-                br_caster_wheel_link:
+                drive_right_link:
                   {}
-              drive_left_link:
-                {}
-              drive_right_link:
-                {}
-              fl_caster_holder_link:
-                fl_caster_wheel_link:
+                fl_caster_holder_link:
+                  fl_caster_wheel_link:
+                    {}
+                fr_caster_holder_link:
+                  fr_caster_wheel_link:
+                    {}
+                imu_link:
                   {}
-              fr_caster_holder_link:
-                fr_caster_wheel_link:
+                left_camera:
+                  left_camera_frame:
+                    {}
+                lidar_link:
                   {}
-              imu_link:
-                {}
-              left_camera:
-                left_camera_frame:
-                  {}
-              lidar_link:
-                {}
-              right_camera:
-                right_camera_frame:
-                  {}
+                right_camera:
+                  right_camera_frame:
+                    {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -309,10 +312,31 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
+    - Alpha: 0.699999988079071
+      Class: rviz_default_plugins/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /map
+      Update Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /map_updates
+      Use Timestamp: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: odom
+    Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:
