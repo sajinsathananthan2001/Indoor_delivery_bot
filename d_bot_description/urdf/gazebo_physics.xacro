@@ -25,16 +25,16 @@
 <!-- friction for caster wheels -->
 <xacro:set_wheel_friction link="drive_left_link" friction="10"/>
 <xacro:set_wheel_friction link="drive_right_link" friction="10"/>
-<xacro:set_wheel_friction link="fr_caster_wheel_link" friction="1"/>
-<xacro:set_wheel_friction link="br_caster_wheel_link" friction="1"/>
-<xacro:set_wheel_friction link="fl_caster_wheel_link" friction="1"/>
-<xacro:set_wheel_friction link="bl_caster_wheel_link" friction="1"/>
+<xacro:set_wheel_friction link="fr_caster_wheel_link" friction="0.1"/>
+<xacro:set_wheel_friction link="br_caster_wheel_link" friction="0.1"/>
+<xacro:set_wheel_friction link="fl_caster_wheel_link" friction="0.1"/>
+<xacro:set_wheel_friction link="bl_caster_wheel_link" friction="0.1"/>
 
 <!-- friction for caster handle -->
-<xacro:set_castor_joint_friction link="fr_caster_holder_link" friction="1"/>
-<xacro:set_castor_joint_friction link="br_caster_holder_link" friction="1"/>
-<xacro:set_castor_joint_friction link="fl_caster_holder_link" friction="1"/>
-<xacro:set_castor_joint_friction link="bl_caster_holder_link" friction="1"/>
+<xacro:set_castor_joint_friction link="fr_caster_holder_link" friction="2"/>
+<xacro:set_castor_joint_friction link="br_caster_holder_link" friction="2"/>
+<xacro:set_castor_joint_friction link="fl_caster_holder_link" friction="2"/>
+<xacro:set_castor_joint_friction link="bl_caster_holder_link" friction="2"/>
 
 
 </robot>

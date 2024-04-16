@@ -6,7 +6,7 @@ publish_rate: 50
 left_wheel: ['drive_left_joint']
 right_wheel: ['drive_right_joint']
 
-wheel_separation: 0.5
+wheel_separation: 0.4
 wheel_radius: 0.077 #wheel radius
 
 # Odometry covariances for the encoder output of the robot. These values should

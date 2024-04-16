@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Arguments -->
+    <arg name="open_rviz" default="false"/>
+    <arg name="map_file" default="$(find d_bot_navigation)/maps/trial1.yaml" doc="Path to a map .yaml file (required)." />
+
+    <!-- Map server -->
+    <node name="static_map_server" pkg="map_server" type="map_server" args="$(arg map_file)" ns="/" output="screen">
+        <param name="frame_id" type="string" value="map"/>
+    </node>
+
+    <include file="$(find d_bot_sim_control)/launch/diff_drive.launch" />
+
+    <include file="$(find d_bot_driver)/launch/cloud_to_laser.launch" />
+
+    <include file="$(find d_bot_driver)/launch/laser_merge.launch" />
+
+    <include file="$(find d_bot_navigation)/launch/amcl.launch" />
+
+    <!-- rviz -->
+    <group if="$(arg open_rviz)"> 
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find my_mir_nav)/rviz/rvis.rviz"/>
+    </group>
+
+</launch>
+

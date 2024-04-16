@@ -34,9 +34,9 @@
       <direction>0 0 -1</direction>
     </light>
 
-    <include>
+    <!-- <include>
       <uri>model://ground_plane</uri>
-    </include>
+    </include> -->
 
     <include>
       <uri>model://cafe</uri>

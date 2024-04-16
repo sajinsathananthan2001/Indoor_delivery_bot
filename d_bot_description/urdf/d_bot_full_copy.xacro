@@ -1,0 +1,747 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="d_bot">
+
+    <!-- include's -->
+    <xacro:include filename="$(find d_bot_description)/urdf/caster_transmission.xacro" />
+    <xacro:include filename="$(find d_bot_description)/urdf/caster_holder_transmission.xacro" />
+    <xacro:include filename="$(find d_bot_description)/urdf/gazebo_physics.xacro" />
+    <xacro:include filename="$(find d_bot_description)/urdf/gazebo_sensors.xacro" />
+    <xacro:include filename="$(find d_bot_description)/urdf/gazebo_color.xacro" />
+
+
+    <xacro:macro name="default_inertial" params="mass">
+        <inertial>
+            <mass value="${mass}" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+    </xacro:macro>
+
+
+  <!-- base_link -->
+  <link
+    name="base_link">
+    <xacro:default_inertial mass="100"/>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.6 0.6 0.6 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/collision/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <!-- fl_caster_holder_link -->
+  <link
+    name="fl_caster_holder_link">
+    <xacro:default_inertial mass="10"/>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/caster_holder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/collision/caster_holder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fl_caster_holder_joint"
+    type="continuous">
+    <origin
+      xyz="0.215225039750229 0.1771 -0.0145388598876857"
+      rpy="-1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="fl_caster_holder_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+
+
+  <!-- fl_caster_wheel_link -->
+  <link
+    name="fl_caster_wheel_link">
+    <xacro:default_inertial mass="10"/>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/caster_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/collision/caster_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fl_caster_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0126379418294896 -0.00814162274155295 0"
+      rpy="0.152452190017873 -1.5707963267949 0" />
+    <parent
+      link="fl_caster_holder_link" />
+    <child
+      link="fl_caster_wheel_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+
+
+  <!-- fr_caster_holder_link -->
+  <link
+    name="fr_caster_holder_link">
+    <xacro:default_inertial mass="10"/>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/caster_holder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/collision/caster_holder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_caster_holder_joint"
+    type="continuous">
+    <origin
+      xyz="0.214825039750222 -0.177099999999992 -0.0145388598876857"
+      rpy="-1.57079632679486 0 -1.5707963267949" />
+    <parent
+      link="base_link" />
+    <child
+      link="fr_caster_holder_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+
+
+  <!-- fr_caster_wheel_link -->
+  <link
+    name="fr_caster_wheel_link">
+    <xacro:default_inertial mass="10"/>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/caster_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/collision/caster_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_caster_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0126379418294887 -0.00814162274155716 0"
+      rpy="0.233129638410502 -1.5707963267949 0" />
+    <parent
+      link="fr_caster_holder_link" />
+    <child
+      link="fr_caster_wheel_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+
+
+  <!-- bl_caster_holder_link -->
+  <link
+    name="bl_caster_holder_link">
+    <xacro:default_inertial mass="10"/>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/caster_holder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/collision/caster_holder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_caster_holder_joint"
+    type="continuous">
+    <origin
+      xyz="-0.20600856677299 0.177100000000002 -0.0145388598877"
+      rpy="-1.57079632679486 0 -1.5707963267949" />
+    <parent
+      link="base_link" />
+    <child
+      link="bl_caster_holder_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+
+
+  <!-- bl_caster_wheel_link -->
+  <link
+    name="bl_caster_wheel_link">
+    <xacro:default_inertial mass="10"/>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/caster_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/collision/caster_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_caster_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0126379418294879 -0.00814162274155106 0"
+      rpy="1.43676256222585 -1.5707963267949 0" />
+    <parent
+      link="bl_caster_holder_link" />
+    <child
+      link="bl_caster_wheel_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+
+
+  <!-- br_caster_holder_link -->
+  <link
+    name="br_caster_holder_link">
+    <xacro:default_inertial mass="10"/>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/caster_holder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/collision/caster_holder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="br_caster_holder_joint"
+    type="continuous">
+    <origin
+      xyz="-0.206408566772991 -0.177100000000006 -0.014538859887695"
+      rpy="-1.57079632679489 0 -3.08172138398829" />
+    <parent
+      link="base_link" />
+    <child
+      link="br_caster_holder_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+
+
+
+  <!-- br_caster_wheel_link -->
+  <link
+    name="br_caster_wheel_link">
+    <xacro:default_inertial mass="10"/>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/caster_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/collision/caster_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="br_caster_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0126379418294893 -0.00814162274154767 0"
+      rpy="0 -1.5707963267949 0" />
+    <parent
+      link="br_caster_holder_link" />
+    <child
+      link="br_caster_wheel_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+
+
+  <!-- drive_left_link -->
+  <link
+    name="drive_left_link">
+    <xacro:default_inertial mass="200"/>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/drive_left_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.2 0.2 0.2 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.074" length="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="drive_left_joint"
+    type="continuous">
+    <origin
+      xyz="-7.34417430403589E-06 0.254110517 0.050"
+      rpy="-0.10097 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="drive_left_link" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+
+
+
+  <!-- drive_right_link -->
+  <link
+    name="drive_right_link">
+    <xacro:default_inertial mass="200"/>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/drive_right_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.2 0.2 0.2 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.074" length="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="drive_right_joint"
+    type="continuous">
+    <origin
+      xyz="7.34417430392487E-06 -0.254110517 0.050"
+      rpy="-0.10097 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="drive_right_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+
+  <!-- imu_link and joint-->
+  <link name="imu_link">
+    <xacro:default_inertial mass="2"/>
+    <visual name="">
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.05 0.05 0.05"/>
+      </geometry>
+      <material name="">
+        <color rgba="1.0 0.0 0.0 1.0"/>
+        <texture filename=""/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="imu_joint" type="fixed">
+    <axis xyz="0 0 0" />
+    <origin xyz="0 0 0.1" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+  </joint>
+
+
+
+<!-- front_lidar_link -->
+  <link
+    name="front_lidar_link">
+    <xacro:default_inertial mass="2"/>
+    <visual>
+      <origin
+        xyz="0 0 -0.03"
+        rpy="1.5708 0 1.5708" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/front_lidar_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 0.4" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="-0.05 0 -0.03"
+        rpy="0 0 1.5708" />
+      <geometry>
+        <cylinder radius="0.03" length="0.015"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_lidar_joint"
+    type="fixed">
+    <origin
+      xyz="0.32109 0 0.1423"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_lidar_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+
+
+  <!-- left_rs_link -->
+  <link
+    name="left_rs_link">
+    <xacro:default_inertial mass="1"/>
+    <visual>
+      <origin
+        xyz="-0.007 0 0"
+        rpy="1.5708 0 1.7" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/left_rs_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/left_rs_link.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="left_rs_joint"
+    type="fixed">
+    <origin
+      xyz="0.3 0.063516 0.2198"
+      rpy="0 0 0.2" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_rs_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <!-- for visual -->
+  <link
+    name="left_rs_visual_link">
+    <xacro:default_inertial mass="1"/>
+  </link>
+
+  <joint
+    name="left_rs_visual_joint"
+    type="fixed">
+    <origin
+      xyz="0.3 0.063516 0.2198"
+      rpy="-1.5708 0 -1.3708" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_rs_visual_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+
+
+  <!-- right_rs_link -->
+  <link
+    name="right_rs_link">
+    <xacro:default_inertial mass="1"/>
+    <visual>
+      <origin
+        xyz="-0.007 0 0"
+        rpy="1.46278949747624 0 1.35" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/right_rs_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://d_bot_description/meshes/right_rs_link.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="right_rs_joint"
+    type="fixed">
+    <origin
+      xyz="0.3 -0.0630797813490415 0.219229621554835"
+      rpy="0 0 -0.2" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_rs_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <!-- for visual -->
+  <link
+    name="right_rs_visual_link">
+    <xacro:default_inertial mass="1"/>
+  </link>
+
+  <joint
+    name="right_rs_visual_joint"
+    type="fixed">
+    <origin
+      xyz="0.3 -0.0630797813490415 0.219229621554835"
+      rpy="-1.5708 0 -1.7708" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_rs_visual_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+
+  <!-- for left drive wheel -->
+
+  <!-- This block provides the simulator (Gazebo) with information on a few additional
+  physical properties. See http://gazebosim.org/tutorials/?tut=ros_urdf for more-->
+  <gazebo reference="drive_wheel_left">
+      <mu1 value="200.0"/>
+      <mu2 value="100.0"/>
+      <kp value="10000000.0" />
+      <kd value="1.0" />
+      <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <!-- This block connects the wheel joint to an actuator (motor), which informs both
+  simulation and visualization of the robot -->
+  <transmission name="drive_wheel_left_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="drive_wheel_left_motor">
+          <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+      <joint name="drive_left_joint">
+          <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+  </transmission>
+
+  <!-- for right drive wheel -->
+
+  <!-- This block provides the simulator (Gazebo) with information on a few additional
+  physical properties. See http://gazebosim.org/tutorials/?tut=ros_urdf for more-->
+  <gazebo reference="drive_wheel_right">
+      <mu1 value="200.0"/>
+      <mu2 value="100.0"/>
+      <kp value="10000000.0" />
+      <kd value="1.0" />
+      <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <!-- This block connects the wheel joint to an actuator (motor), which informs both
+  simulation and visualization of the robot -->
+  <transmission name="drive_wheel_right_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="drive_wheel_right_motor">
+          <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+      <joint name="drive_right_joint">
+          <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+  </transmission>
+
+
+
+
+  <!-- Gazebo plugin for ROS Control -->
+  <gazebo>
+
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+          <robotNamespace>/</robotNamespace>
+      </plugin>
+
+  </gazebo>
+
+    
+</robot>
