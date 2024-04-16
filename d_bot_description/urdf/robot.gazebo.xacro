@@ -54,8 +54,8 @@
         <scan>
             <horizontal>
                 <samples>360</samples>
-                <min_angle>-1.74533</min_angle>
-                <max_angle>1.74533</max_angle>
+                <min_angle>-1.65806</min_angle>
+                <max_angle>1.65806</max_angle>
             </horizontal>
         </scan>
         <range>
