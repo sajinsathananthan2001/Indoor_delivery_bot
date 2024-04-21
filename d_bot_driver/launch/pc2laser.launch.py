@@ -24,13 +24,15 @@ def generate_launch_description():
             name='pointcloud_to_laserscan1',
             remappings=[('cloud_in', '/right_camera/depth/points'),
                         ('scan', '/scan_right')],
-            parameters=[config1]
+            parameters=[config1],
+            output='screen'
         ),
         Node(
             package='pointcloud_to_laserscan', executable='pointcloud_to_laserscan_node',
             name='pointcloud_to_laserscan2',
             remappings=[('cloud_in', '/left_camera/depth/points'),
                         ('scan', '/scan_left')],
-            parameters=[config2]
+            parameters=[config2],
+            output='screen'
         )
     ])
