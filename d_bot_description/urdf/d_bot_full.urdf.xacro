@@ -48,11 +48,38 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
+        xyz="-0.05 0 0.18"
         rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="file:///$(find d_bot_description)/meshes/base_link.STL" />
+        <!-- <mesh filename="file:///$(find d_bot_description)/meshes/base_link.STL" /> -->
+        <box size="0.525 0.46 0.1"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin
+        xyz="0.03 0 0.4"
+        rpy="0 0 0" />
+      <geometry>
+        <!-- <mesh filename="file:///$(find d_bot_description)/meshes/base_link.STL" /> -->
+        <box size="0.64 0.49 0.01"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin
+        xyz="0.02 0 0.595"
+        rpy="0 0 0" />
+      <geometry>
+        <!-- <mesh filename="file:///$(find d_bot_description)/meshes/base_link.STL" /> -->
+        <box size="0.64 0.49 0.01"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin
+        xyz="0.01 0 0.79"
+        rpy="0 0 0" />
+      <geometry>
+        <!-- <mesh filename="file:///$(find d_bot_description)/meshes/base_link.STL" /> -->
+        <box size="0.64 0.49 0.01"/>
       </geometry>
     </collision>
   </link>
@@ -123,10 +150,10 @@
     <collision>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 1.5714 0" />
       <geometry>
-        <mesh
-          filename="file:///$(find d_bot_description)/meshes/fl_caster_wheel_link.STL" />
+        <cylinder length="0.02" radius="0.02525"/>
+        <!-- <mesh filename="file:///$(find d_bot_description)/meshes/fl_caster_wheel_link.STL" /> -->
       </geometry>
     </collision>
   </link>
@@ -211,10 +238,10 @@
     <collision>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 1.5714 0" />
       <geometry>
-        <mesh
-          filename="file:///$(find d_bot_description)/meshes/fr_caster_wheel_link.STL" />
+        <cylinder length="0.02" radius="0.02525"/>
+        <!-- <mesh filename="file:///$(find d_bot_description)/meshes/fr_caster_wheel_link.STL" /> -->
       </geometry>
     </collision>
   </link>
@@ -299,10 +326,10 @@
     <collision>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 1.5714 0" />
       <geometry>
-        <mesh
-          filename="file:///$(find d_bot_description)/meshes/bl_caster_wheel_link.STL" />
+        <cylinder length="0.02" radius="0.02525"/>
+        <!-- <mesh filename="file:///$(find d_bot_description)/meshes/bl_caster_wheel_link.STL" /> -->
       </geometry>
     </collision>
   </link>
@@ -388,10 +415,10 @@
     <collision>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 1.5714 0" />
       <geometry>
-        <mesh
-          filename="file:///$(find d_bot_description)/meshes/br_caster_wheel_link.STL" />
+        <cylinder length="0.02" radius="0.02525"/>
+        <!-- <mesh filename="file:///$(find d_bot_description)/meshes/br_caster_wheel_link.STL" /> -->
       </geometry>
     </collision>
   </link>
@@ -431,11 +458,11 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="0.05 0 0"
+        rpy="0 1.5714 0" />
       <geometry>
-        <mesh
-          filename="file:///$(find d_bot_description)/meshes/drive_left_link.STL" />
+        <!-- <mesh filename="file:///$(find d_bot_description)/meshes/drive_left_link.STL" /> -->
+        <cylinder length="0.05" radius="0.0825"/>
       </geometry>
     </collision>
   </link>
@@ -475,11 +502,11 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="0.05 0 0"
+        rpy="0 1.5714 0" />
       <geometry>
-        <mesh
-          filename="file:///$(find d_bot_description)/meshes/drive_right_link.STL" />
+      <cylinder length="0.05" radius="0.0825"/>
+        <!-- <mesh filename="file:///$(find d_bot_description)/meshes/drive_right_link.STL" /> -->
       </geometry>
     </collision>
   </link>
@@ -701,14 +728,14 @@
     <collision>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.1 0.1 0.1"/>
+        <box size="0.05 0.05 0.05"/>
       </geometry>
     </collision>
   </link>
 
   <joint name="imu_joint" type="fixed">
     <axis xyz="0 0 0" />
-    <origin xyz="0 0 0.1" rpy="0 0 0"/>
+    <origin xyz="0 0 0.26" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="imu_link"/>
   </joint>
