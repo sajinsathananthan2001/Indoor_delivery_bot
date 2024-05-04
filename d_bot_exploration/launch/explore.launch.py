@@ -26,7 +26,7 @@ def generate_launch_description():
     )
 
     declare_use_sim_time_cmd = DeclareLaunchArgument(
-        'use_sim_time', default_value='false', description='Use simulation (Gazebo) clock if true'
+        'use_sim_time', default_value='true', description='Use simulation (Gazebo) clock if true'
     )
 
     slam_launch = IncludeLaunchDescription(
@@ -72,8 +72,8 @@ def generate_launch_description():
     ld.add_action(declare_params_file_cmd)
     ld.add_action(declare_use_sim_time_cmd)
 
-    ld.add_action(slam_launch)
-    ld.add_action(nav2_bringup_launch)
+    # ld.add_action(slam_launch)
+    # ld.add_action(nav2_bringup_launch)
     ld.add_action(explore_lite_launch)
     # ld.add_action(rviz_node)
 

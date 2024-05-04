@@ -12,11 +12,11 @@ def generate_launch_description():
     recovery_yaml = os.path.join(get_package_share_directory('d_bot_navigation'), 'config', 'recovery.yaml')
 
     
-    is_explore = DeclareLaunchArgument(
-        'is_explore',
-        default_value=False,
-        description="Indicating whether autonomous mapping or navigation",
-    )
+#     is_explore = DeclareLaunchArgument(
+#         'is_explore',
+#         default_value=False,
+#         description="Indicating whether autonomous mapping or navigation",
+#     )
 
     nav_controller = Node(
             package='nav2_controller',
